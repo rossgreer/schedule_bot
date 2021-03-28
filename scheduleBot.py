@@ -151,12 +151,16 @@ if __name__ == '__main__':
     print("Testing Event In The Past")
     print("First date: 4/1/2021, should be False")
     current_time_check = eventIsInThePast("04/01/21","10:00")
+    print("Result: "+str(current_time_check))
     print("Second date: 3/3/2021, should be True")
     current_time_check = eventIsInThePast("03/03/21","10:00")
+    print("Result: "+str(current_time_check))
+
 
 
     ## END TESTING
 
+    """
     event_limit = 100
     events_list = []
 
@@ -184,4 +188,5 @@ if __name__ == '__main__':
     else:
         pass
         ## TODO: decide what to do with an invalid event
+    """
 
