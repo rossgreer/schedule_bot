@@ -147,8 +147,12 @@ if __name__ == '__main__':
     # We need to store event time, event date, when to be reminded
 
     ## AREA FOR TESTING FUNCTIONS 
+    print("Testing Event In The Past")
+    print("First date: 4/1/2021, should be False")
+    current_time_check = eventIsInThePast("04/01/21","10:00")
+    print("Second date: 3/3/2021, should be True")
+    current_time_check = eventIsInThePast("03/03/21","10:00")
 
-    current_time_check = eventIsInThePast(1,1)
 
     ## END TESTING
 
