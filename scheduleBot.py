@@ -115,9 +115,10 @@ def eventIsInThePast(event_complete_date, event_time):
     event_date = event_complete_date[3:5]
 
     ## TODO NEXT TIME: Finish this logic!
-    if event_year < current_year:
+    if event_year < current_year or event_month < current_month or event_date < current_date:
 
         return True
+    
 
 
 
@@ -149,8 +150,8 @@ if __name__ == '__main__':
 
     ## AREA FOR TESTING FUNCTIONS 
     print("Testing Event In The Past")
-    print("First date: 4/1/2021, should be False")
-    current_time_check = eventIsInThePast("04/01/21","10:00")
+    print("First date: 4/22/2021, should be False")
+    current_time_check = eventIsInThePast("04/22/21","10:00")
     print("Result: "+str(current_time_check))
     print("Second date: 3/3/2021, should be True")
     current_time_check = eventIsInThePast("03/03/21","10:00")
