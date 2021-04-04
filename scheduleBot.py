@@ -173,10 +173,10 @@ if __name__ == '__main__':
     print("Result: "+str(current_time_check))
     print("Testing Two Years Future")
     print("First date: 5/4/2022, should be True")
-    current_time_check = eventIsInThePast("05/04/22","10:00")
+    current_time_check = two_years_future("05/04/22","10:00")
     print("Result: "+str(current_time_check))
     print("Second date: 1/4/2072, should be False")
-    current_time_check = eventIsInThePast("01/04/72","10:00")
+    current_time_check = two_years_future("01/04/72","10:00")
     print("Result: "+str(current_time_check))
 
 
