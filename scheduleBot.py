@@ -108,15 +108,10 @@ def eventIsInThePast(event_complete_date, event_time):
 
     # How do we check if the event is in the past?
     ## MM/DD/YY
-    print(event_complete_date)
     event_year = event_complete_date[6:8]
     event_month = event_complete_date[0:2]
     event_date = event_complete_date[3:5]
 
-    ## TODO NEXT TIME: Finish this logic!
-    print(event_year)
-    print(event_month)
-    print(event_date)
     if event_year < current_year:
         return True
     elif event_month < current_month:
@@ -127,6 +122,8 @@ def eventIsInThePast(event_complete_date, event_time):
         return False
 
 def two_years_future(event_date):
+	## Returns 'True' if the event is within the next two years
+	## Returns 'False' otherwise
     event_year = event_date[6:8]
     current_year = current_time[0:4]
     event_month = event_date[0:2]
@@ -166,6 +163,7 @@ if __name__ == '__main__':
     # We need to store event time, event date, when to be reminded
 
     ## AREA FOR TESTING FUNCTIONS 
+    print("FUNCTION TESTS")
     print("Testing Event In The Past")
     print("First date: 4/22/2021, should be False")
     current_time_check = eventIsInThePast("04/22/21","10:00")
@@ -173,6 +171,14 @@ if __name__ == '__main__':
     print("Second date: 3/3/2021, should be True")
     current_time_check = eventIsInThePast("03/03/21","10:00")
     print("Result: "+str(current_time_check))
+    print("Testing Two Years Future")
+    print("First date: 5/4/2022, should be True")
+    current_time_check = eventIsInThePast("05/04/22","10:00")
+    print("Result: "+str(current_time_check))
+    print("Second date: 1/4/2072, should be False")
+    current_time_check = eventIsInThePast("01/04/72","10:00")
+    print("Result: "+str(current_time_check))
+
 
 
 
