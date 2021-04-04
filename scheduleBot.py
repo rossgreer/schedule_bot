@@ -114,11 +114,14 @@ def eventIsInThePast(event_complete_date, event_time):
     event_date = event_complete_date[3:5]
 
     ## TODO NEXT TIME: Finish this logic!
+    print(event_year)
+    print(event_month)
+    print(event_date)
     if event_year < current_year:
         return True
     elif event_month < current_month:
         return True
-    elif event_day < current_day:
+    elif event_date < current_date:
         return True
     else:
         return False
