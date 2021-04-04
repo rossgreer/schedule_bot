@@ -120,6 +120,8 @@ def eventIsInThePast(event_complete_date, event_time):
         return True
     elif event_day < current_day:
         return True
+    else:
+        return False
 
 
 
