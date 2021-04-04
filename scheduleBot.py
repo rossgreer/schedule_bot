@@ -106,8 +106,7 @@ def eventIsInThePast(event_complete_date, event_time):
     current_hour = current_time[11:13]
     current_minute = current_time[14:16]
 
-    # How do we check if the event is in the past? 
-
+    # How do we check if the event is in the past?
     ## MM/DD/YY
 
     event_year = event_complete_date[7:9]
@@ -115,10 +114,12 @@ def eventIsInThePast(event_complete_date, event_time):
     event_date = event_complete_date[3:5]
 
     ## TODO NEXT TIME: Finish this logic!
-    if event_year < current_year or event_month < current_month or event_date < current_date:
-
+    if event_year < current_year:
         return True
-    
+    elif event_month < current_month:
+        return True
+    elif event_day < current_day:
+        return True
 
 
 
