@@ -126,6 +126,17 @@ def eventIsInThePast(event_complete_date, event_time):
     else:
         return False
 
+def two_years_future(event_date):
+    event_year = event_date[6:8]
+    current_year = current_time[0:4]
+    event_month = event_date[0:2]
+    current_month = current_time[5:7]
+
+    if event_year-2 <= current_year and event_month <= current_month:
+        return True
+    else:
+        return False
+
 
 
 def checkValidEvent(event):
