@@ -108,8 +108,8 @@ def eventIsInThePast(event_complete_date, event_time):
 
     # How do we check if the event is in the past?
     ## MM/DD/YY
-
-    event_year = event_complete_date[7:9]
+    print(event_complete_date)
+    event_year = event_complete_date[6:8]
     event_month = event_complete_date[0:2]
     event_date = event_complete_date[3:5]
 
