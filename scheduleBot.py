@@ -98,7 +98,7 @@ def eventIsInThePast(event_complete_date, event_time):
 
     # TODO: figure out the current time
     current_time = str(datetime.datetime.now())
-
+    
     # Extract features from current_time: year, month, date, hour, minutes
     current_year = current_time[0:4]
     current_month = current_time[5:7]
@@ -124,12 +124,16 @@ def eventIsInThePast(event_complete_date, event_time):
 def two_years_future(event_date):
 	## Returns 'True' if the event is within the next two years
 	## Returns 'False' otherwise
+    current_time = str(datetime.datetime.now())
     event_year = event_date[6:8]
-    current_year = current_time[0:4]
+    current_year = current_time[2:4]
     event_month = event_date[0:2]
     current_month = current_time[5:7]
-
-    if event_year-2 <= current_year and event_month <= current_month:
+    
+    #Fix problem here for homework
+    if int(event_year)-2 < int(current_year):
+        return True
+    elif int(event_year)-2 == int(current_year) and int(event_month) <= int(current_month):
         return True
     else:
         return False
