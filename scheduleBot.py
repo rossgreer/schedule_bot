@@ -141,8 +141,13 @@ def two_years_future(event_date):
 def validMilitaryTime(event_time):
     ## Returns 'True' if time is valid military time
     ## Returns 'False' otherwise
-
-
+    # 23:59
+    event_hour = int(event_time(0:2))
+    event_minute = int(event_time(3:5))
+    if event_hour < 24 and event_minute < 60:
+        return True
+    else:
+        return False
 
 
 def checkValidEvent(event):
@@ -194,25 +199,17 @@ if __name__ == '__main__':
     print("Result: "+str(current_time_check))
 
     print("Testing Valid Military Time")
-    print("Time: meow, should be False")
-    current_time_check = validMilitaryTime("meow")
-    print("Result: "+str(current_time_check))
-    print("Time: 1:0, should be False")
-    current_time_check = validMilitaryTime("1:0")
-    print("Result: "+str(current_time_check))
-    print("Time: me:ow, should be False")
-    current_time_check = validMilitaryTime("me:ow")
-    print("Result: "+str(current_time_check))
     print("Time: 24:59, should be False")
-    current_time_check = validMilitaryTime("24:59")
+    current_time_check = two_years_future("05/04/22")
     print("Result: "+str(current_time_check))
-    print("Time: 07:60, should be False")
-    current_time_check = validMilitaryTime("07:60")
+    print("Second date: 1/4/2072, should be False")
+    current_time_check = two_years_future("01/04/72")
     print("Result: "+str(current_time_check))
-    print("Time: 107:60, should be False")
-    current_time_check = validMilitaryTime("107:60")
-    print("Result: "+str(current_time_check))
-    
+
+
+
+
+
     ## END TESTING
 
     """
