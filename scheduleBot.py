@@ -142,8 +142,8 @@ def validMilitaryTime(event_time):
     ## Returns 'True' if time is valid military time
     ## Returns 'False' otherwise
     # 23:59
-    event_hour = int(event_time(0:2))
-    event_minute = int(event_time(3:5))
+    event_hour = int(event_time[0:2])
+    event_minute = int(event_time[3:5])
     if event_hour < 24 and event_minute < 60:
         return True
     else:
