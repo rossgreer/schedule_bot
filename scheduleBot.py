@@ -138,6 +138,11 @@ def two_years_future(event_date):
     else:
         return False
 
+def validMilitaryTime(time):
+    ## Returns 'True' if time is valid military time
+    ## Returns 'False' otherwise
+
+    
 
 
 def checkValidEvent(event):
