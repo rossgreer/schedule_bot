@@ -204,10 +204,10 @@ def checkValidEvent(event):
     elif not validMilitaryTime(event.time):
         print("Event is not in valid military time format; cannot be added.")
         return False
-    elif not reminder_date_at_least_month_before_event(event.time, reminder.time):
+    elif not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
         print("Event is not at least one month before the event.")
         return False
-    elif not validMilitaryTime(reminder.time):
+    elif not validMilitaryTime(event.reminder_time):
         print("Reminder is not in valid military time format; cannot be added.")
         return False
 
@@ -269,11 +269,11 @@ if __name__ == '__main__':
 
     ## TODO: Need to press 'n' for 'new' to add event. 
 
-    event_name = input("Enter event name.")
-    event_date = input("Enter month, date, and year as MM/DD/YY.")
-    event_time = input("Enter event time.")
-    event_reminder_date = input("What date would you like to be reminded?")
-    event_reminder_time = input("What time would you like to be reminded?")
+    event_name = input("Enter event name. ")
+    event_date = input("Enter month, date, and year as MM/DD/YY. ")
+    event_time = input("Enter event time. ")
+    event_reminder_date = input("What date would you like to be reminded? ")
+    event_reminder_time = input("What time would you like to be reminded? ")
 
     ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
 
