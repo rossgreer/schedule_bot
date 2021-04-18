@@ -138,11 +138,11 @@ def two_years_future(event_date):
     else:
         return False
 
-def validMilitaryTime(time):
+def validMilitaryTime(event_time):
     ## Returns 'True' if time is valid military time
     ## Returns 'False' otherwise
 
-    
+
 
 
 def checkValidEvent(event):
@@ -162,7 +162,12 @@ def checkValidEvent(event):
     elif eventIsInThePast(event.date, event.time):
         print("Event is in the past; cannot be added.")
         return False
-
+    elif not two_years_future(event.date):
+        print("Event is more than two years in the future; cannot be added.")
+        return False
+    elif not validMilitaryTime(event.time):
+        print("Event is not in valid military time format; cannot be added.")
+        return False
 
     return True
 
@@ -187,6 +192,15 @@ if __name__ == '__main__':
     print("Second date: 1/4/2072, should be False")
     current_time_check = two_years_future("01/04/72")
     print("Result: "+str(current_time_check))
+
+    print("Testing Valid Military Time")
+    print("Time: 24:59, should be False")
+    current_time_check = two_years_future("05/04/22")
+    print("Result: "+str(current_time_check))
+    print("Second date: 1/4/2072, should be False")
+    current_time_check = two_years_future("01/04/72")
+    print("Result: "+str(current_time_check))
+
 
 
 
