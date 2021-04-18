@@ -192,7 +192,7 @@ def checkValidEvent(event):
     ##    reminder date is not more than a month before the event
     ##    reminder time is a valid military time
 
-    if len(event.name) > 3:
+    if len(event.name) > 300:
         print("This event is invalid; more than 300 characters. ")
         return False
     elif eventIsInThePast(event.date, event.time):
