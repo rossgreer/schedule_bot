@@ -225,6 +225,12 @@ if __name__ == '__main__':
     print("Time: 107:60, should be False")
     current_time_check = validMilitaryTime("107:60")
     print("Result: "+str(current_time_check))
+    print("Time: 10:50, should be True")
+    current_time_check = validMilitaryTime("10:50")
+    print("Result: "+str(current_time_check))
+    print("Time: 01:06, should be True")
+    current_time_check = validMilitaryTime("01:06")
+    print("Result: "+str(current_time_check))
     
     ## END TESTING
 
