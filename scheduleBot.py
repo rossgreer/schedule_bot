@@ -181,10 +181,6 @@ def reminder_date_at_least_month_before_event(event_date, reminder_date):
     #if True, return True, if False, return False
 
 
-
-
-
-
 def checkValidEvent(event):
     ## Returns 'True' if this is a valid event
     ## Returns 'False' otherwise, and prints what is invalid
@@ -208,15 +204,17 @@ def checkValidEvent(event):
     elif not validMilitaryTime(event.time):
         print("Event is not in valid military time format; cannot be added.")
         return False
+    elif not reminder_date_at_least_month_before_event(event.time, reminder.time):
+        print("Event is not at least one month before the event.")
+        return False
+    elif not validMilitaryTime(reminder.time):
+        print("Reminder is not in valid military time format; cannot be added.")
+        return False
 
     return True
 
 
-if __name__ == '__main__':
-    # We need to put events in!
-    # We need to store event time, event date, when to be reminded
-
-    ## AREA FOR TESTING FUNCTIONS 
+def test_functions():
     print("FUNCTION TESTS")
     print("Testing Event In The Past")
     print("First date: 4/22/2021, should be False")
@@ -232,7 +230,6 @@ if __name__ == '__main__':
     print("Second date: 1/4/2072, should be False")
     current_time_check = two_years_future("01/04/72")
     print("Result: "+str(current_time_check))
-
     print("Testing Valid Military Time")
     print("Time: meow, should be False")
     current_time_check = validMilitaryTime("meow")
@@ -258,36 +255,35 @@ if __name__ == '__main__':
     print("Time: 01:06, should be True")
     current_time_check = validMilitaryTime("01:06")
     print("Result: "+str(current_time_check))
-    
+
+if __name__ == '__main__':
+    # We need to put events in!
+    # We need to store event time, event date, when to be reminded
+
+    ## AREA FOR TESTING FUNCTIONS 
+    test_functions()
     ## END TESTING
 
-    """
     event_limit = 100
     events_list = []
 
     ## TODO: Need to press 'n' for 'new' to add event. 
 
-    ## TODO: no more than 300 characters
     event_name = input("Enter event name.")
-    ## TODO: event must be in the future, but not more than 2 years into the future
     event_date = input("Enter month, date, and year as MM/DD/YY.")
-    ## TODO: Must be a valid military time
     event_time = input("Enter event time.")
-    ## TODO: reminder can't be more than a month before a event
     event_reminder_date = input("What date would you like to be reminded?")
-    ## TODO: must be a valid military time
     event_reminder_time = input("What time would you like to be reminded?")
 
     ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
 
-    print(ourFirstEvent)
-
-    print(checkValidEvent(ourFirstEvent))
+    print("This is our first event: " + str(ourFirstEvent))
+    print("Does this event pass all the tests? "+str(checkValidEvent(ourFirstEvent)))
 
     if checkValidEvent(ourFirstEvent):
         events_list += [ourFirstEvent]
     else:
         pass
         ## TODO: decide what to do with an invalid event
-    """
+
 
