@@ -268,8 +268,8 @@ if __name__ == '__main__':
     events_list = []
 
     ## TODO: Need to press 'n' for 'new' to add event. 
-    valid_event = True
-    while valid_event:
+    valid_event = False
+    while not valid_event:
 
 	    event_name = input("Enter event name. ")
 	    event_date = input("Enter month, date, and year as MM/DD/YY. ")
