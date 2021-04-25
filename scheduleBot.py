@@ -191,28 +191,28 @@ def checkValidEvent(event):
     ##    time is valid military time
     ##    reminder date is not more than a month before the event
     ##    reminder time is a valid military time
+    true_or_false = True
 
     if len(event.name) > 300:
         print("This event is invalid; more than 300 characters. ")
-        return False
-    elif not validMilitaryTime(event.time):
+        true_or_false = False
+    if not validMilitaryTime(event.time):
         print("Event is not in valid military time format; cannot be added.")
-        return False
-    elif not validMilitaryTime(event.reminder_time):
+        true_or_false = False
+    if not validMilitaryTime(event.reminder_time):
         print("Reminder is not in valid military time format; cannot be added.")
-        return False
-    elif eventIsInThePast(event.date, event.time):
+        true_or_false = False
+    if eventIsInThePast(event.date, event.time):
         print("Event is in the past; cannot be added.")
-        return False
-    elif not two_years_future(event.date):
+        true_or_false = False
+    if not two_years_future(event.date):
         print("Event is more than two years in the future; cannot be added.")
-        return False
-    elif not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
+        true_or_false = False
+    if not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
         print("Event is not at least one month before the event.")
-        return False
+        true_or_false = False
 
-
-    return True
+    return true_or_false 
 
 
 def test_functions():
