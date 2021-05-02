@@ -218,6 +218,10 @@ def checkValidEvent(event):
     if len(event.name) > 300:
         print("This event is invalid; more than 300 characters. ")
         return False
+    elif not validDate(event.date):
+        print("Event date is not in valid date format; cannot be added.")
+    elif not validDate(event.reminder_date):
+        print("Reminder date is not in valid date format; cannot be added.")
     elif not validMilitaryTime(event.time):
         print("Event is not in valid military time format; cannot be added.")
         return False
