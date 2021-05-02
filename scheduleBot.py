@@ -273,6 +273,19 @@ def test_functions():
     print("Time: 01:06, should be True")
     current_time_check = validMilitaryTime("01:06")
     print("Result: "+str(current_time_check))
+    print("Testing Valid Date")
+    print("Date: meow, should be False")
+    current_time_check = validDate("meow")
+    print("Result: "+str(current_time_check))
+    print("Date: 21452839, should be False")
+    current_time_check = validDate("21452839")
+    print("Result: "+str(current_time_check))
+    print("Date: 05/02/2021, should be True")
+    current_time_check = validDate("05/02/2021")
+    print("Result: "+str(current_time_check))
+
+
+
 
 if __name__ == '__main__':
     # We need to put events in!
