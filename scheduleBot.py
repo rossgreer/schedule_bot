@@ -163,29 +163,23 @@ def validDate(event_date):
     ## Returns 'True' if the date is a valid date
     ## Returns 'False' otherwise
     ## Valid dates should be in the format MM/DD/YYYY
-    if event_date[2] == '/':
-        return True
-    else:
+    if event_date[2] != '/':
         return False
-    if event_date[5] == '/':
-        return True
-    else:
+    if not event_date[5] == '/':
         return False
     try:
         int(event_date[0:2])
     except ValueError:
         return False
-
     try:
         int(event_date[3:5])
     except ValueError:
         return False
-
     try:
         int(event_date[6:10])
     except ValueError:
         return False
-
+        
     return True
 
 
