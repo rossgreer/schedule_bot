@@ -293,6 +293,9 @@ def test_functions():
     print("Date: 05/02/2021, should be True")
     current_time_check = validDate("05/02/2021")
     print("Result: "+str(current_time_check))
+    print("Date: me/owwwww, should be False")
+    current_time_check = validDate("me/owwwww")
+    print("Result: "+str(current_time_check))
 
 
 
