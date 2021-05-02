@@ -163,6 +163,14 @@ def validDate(event_date):
     ## Returns 'True' if the date is a valid date
     ## Returns 'False' otherwise
     ## Valid dates should be in the format MM/DD/YYYY
+    if event_date[2] == '/':
+        return True
+    else:
+        return False
+    if event_date[5] == '/':
+        return True
+    else:
+        return False
     try:
         int(event_date[0:2])
     except ValueError:
@@ -177,6 +185,8 @@ def validDate(event_date):
         int(event_date[6:10])
     except ValueError:
         return False
+
+    return True
 
 
 def reminder_date_at_least_month_before_event(event_date, reminder_date):
