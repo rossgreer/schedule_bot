@@ -159,9 +159,24 @@ def validMilitaryTime(event_time):
         return False
 
 def validDate(event_date):
+    ## if it is, return True, if not, return False    
     ## Returns 'True' if the date is a valid date
     ## Returns 'False' otherwise
     ## Valid dates should be in the format MM/DD/YYYY
+    try:
+        int(event_date[0:2])
+    except ValueError:
+        return False
+
+    try:
+        int(event_date[3:5])
+    except ValueError:
+        return False
+
+    try:
+        int(event_date[6:10])
+    except ValueError:
+        return False
 
 
 def reminder_date_at_least_month_before_event(event_date, reminder_date):
