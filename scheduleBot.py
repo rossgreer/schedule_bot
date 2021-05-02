@@ -220,16 +220,16 @@ def checkValidEvent(event):
     if len(event.name) > 300:
         print("This event is invalid; more than 300 characters. ")
         error_flag = True
-    elif not validDate(event.date):
+    if not validDate(event.date):
         print("Event date is not in valid date format; cannot be added.")
         error_flag = True
-    elif not validDate(event.reminder_date):
+    if not validDate(event.reminder_date):
         print("Reminder date is not in valid date format; cannot be added.")
         error_flag = True
-    elif not validMilitaryTime(event.time):
+    if not validMilitaryTime(event.time):
         print("Event is not in valid military time format; cannot be added.")
         error_flag = True
-    elif not validMilitaryTime(event.reminder_time):
+    if not validMilitaryTime(event.reminder_time):
         print("Reminder is not in valid military time format; cannot be added.")
         error_flag = True
 
@@ -237,13 +237,13 @@ def checkValidEvent(event):
 
     error_flag2 = False
     if not error_flag:
-        elif eventIsInThePast(event.date, event.time):
+        if eventIsInThePast(event.date, event.time):
             print("Event is in the past; cannot be added.")
             error_flag2 = True
-        elif not two_years_future(event.date):
+        if not two_years_future(event.date):
             print("Event is more than two years in the future; cannot be added.")
             error_flag2 = True
-        elif not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
+        if not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
             print("Event is not at least one month before the event.")
             error_flag2 = True
 
