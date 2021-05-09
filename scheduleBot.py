@@ -220,16 +220,16 @@ def checkValidEvent(event):
     if len(event.name) > 300:
         print("This event is invalid; more than 300 characters. ")
         error_flag = True
-    if not validDate(event.date):
+    elif not validDate(event.date):
         print("Event date is not in valid date format; cannot be added.")
         error_flag = True
-    if not validDate(event.reminder_date):
+    elif not validDate(event.reminder_date):
         print("Reminder date is not in valid date format; cannot be added.")
         error_flag = True
-    if not validMilitaryTime(event.time):
+    elif not validMilitaryTime(event.time):
         print("Event is not in valid military time format; cannot be added.")
         error_flag = True
-    if not validMilitaryTime(event.reminder_time):
+    elif not validMilitaryTime(event.reminder_time):
         print("Reminder is not in valid military time format; cannot be added.")
         error_flag = True
 
@@ -237,13 +237,13 @@ def checkValidEvent(event):
 
     error_flag2 = False
     if not error_flag:
-        if eventIsInThePast(event.date, event.time):
+        elif eventIsInThePast(event.date, event.time):
             print("Event is in the past; cannot be added.")
             error_flag2 = True
-        if not two_years_future(event.date):
+        elif not two_years_future(event.date):
             print("Event is more than two years in the future; cannot be added.")
             error_flag2 = True
-        if not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
+        elif not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
             print("Event is not at least one month before the event.")
             error_flag2 = True
 
@@ -318,26 +318,32 @@ if __name__ == '__main__':
     event_limit = 100
     events_list = []
 
-    ## TODO: Need to press 'n' for 'new' to add event. 
-    valid_event = False
-    while not valid_event:
 
-        event_name = input("Enter event name. ")
-        event_date = input("Enter month, date, and year as MM/DD/YY. ")
-        event_time = input("Enter event time. ")
-        event_reminder_date = input("What date would you like to be reminded? ")
-        event_reminder_time = input("What time would you like to be reminded? ")
+    while True:
 
-        ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
-        valid_event = checkValidEvent(ourFirstEvent)
+        ### TODO: Check if reminder should be issued 
+        print("Checking for reminders...")
 
-        print("This is our first event: " + str(ourFirstEvent))
-        print("Does this event pass all the tests? "+str(valid_event))
+        ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
+        valid_event = False
+        while not valid_event:
 
-        if valid_event:
-            events_list += [ourFirstEvent]
-        else:
-            pass
-            
-    print("Event added! ScheduleBot is ready to send reminders.")
+            event_name = input("Enter event name. ")
+            event_date = input("Enter month, date, and year as MM/DD/YY. ")
+            event_time = input("Enter event time. ")
+            event_reminder_date = input("What date would you like to be reminded? ")
+            event_reminder_time = input("What time would you like to be reminded? ")
+
+            ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
+            valid_event = checkValidEvent(ourFirstEvent)
+
+            print("This is our first event: " + str(ourFirstEvent))
+            print("Does this event pass all the tests? "+str(valid_event))
+
+            if valid_event:
+                events_list += [ourFirstEvent]
+            else:
+                pass
+        print("Event added! ScheduleBot is ready to send reminders.")
+
 
