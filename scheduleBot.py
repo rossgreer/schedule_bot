@@ -88,6 +88,7 @@ class Event():
         self.date = event_date
         self.reminder_date = event_reminder_date
         self.reminder_time = event_reminder_time
+        self.reminded = False
 
     def __str__(self):
         return self.name
@@ -306,7 +307,18 @@ def test_functions():
 
 
 def checkForReminders(events_list):
-    
+    current_time = str(datetime.datetime.now())
+    current_date = current_time[8:10]
+    for event in events_list:
+        reminder_time = event.reminder_time
+        reminder_date = event.reminder_date
+        if event.reminded == False:
+            if current_time >= reminder_time and current_date == reminder_date:
+                print("{} is coming up at {}".format(event.event_name, event.event_time))
+                event.reminded = True
+    #check if they are equal
+    #remind for 2 minutes
+    # if they are, give reminder
 
 
 if __name__ == '__main__':
