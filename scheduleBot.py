@@ -305,10 +305,12 @@ def test_functions():
     current_time_check = validDate("me/owwwww")
     print("Result: "+str(current_time_check))
 
-
+#homework: fix line 311 and fix line 318
 def checkForReminders(events_list):
     current_time = str(datetime.datetime.now())
     current_date = current_time[8:10]
+    print(current_time)
+    print(current_date)
     for event in events_list:
         reminder_time = event.reminder_time
         reminder_date = event.reminder_date
