@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Evie's Schedulebot program
 ### Sort Events
 import datetime  
@@ -345,5 +346,4 @@ if __name__ == '__main__':
             else:
                 pass
         print("Event added! ScheduleBot is ready to send reminders.")
-
 
