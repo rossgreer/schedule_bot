@@ -332,12 +332,14 @@ if __name__ == '__main__':
     event_limit = 100
     events_list = []
     temp_events_list = [Event("Walk the dog","05/09/2021", "9:45","05/09/2021", "9:45")]
+    infinity_counter = 0
 
-    while True:
+    while True and infinity_counter < 10:
 
         ### TODO: Check if reminder should be issued 
         print("Checking for reminders...")
         checkForReminders(temp_events_list)
+        infinity_counter += 1
 
         ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
         # valid_event = False
