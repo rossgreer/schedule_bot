@@ -305,6 +305,8 @@ def test_functions():
     print("Result: "+str(current_time_check))
 
 
+def checkForReminders(events_list):
+    
 
 
 if __name__ == '__main__':
@@ -323,6 +325,7 @@ if __name__ == '__main__':
 
         ### TODO: Check if reminder should be issued 
         print("Checking for reminders...")
+        checkForReminders(events_list)
 
         ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
         valid_event = False
