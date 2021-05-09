@@ -331,33 +331,33 @@ if __name__ == '__main__':
 
     event_limit = 100
     events_list = []
-
+    temp_events_list = [Event("Walk the dog","05/09/2021", "9:45","05/09/2021", "9:45")]
 
     while True:
 
         ### TODO: Check if reminder should be issued 
         print("Checking for reminders...")
-        checkForReminders(events_list)
+        checkForReminders(temp_events_list)
 
         ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
-        valid_event = False
-        while not valid_event:
+        # valid_event = False
+        # while not valid_event:
 
-            event_name = input("Enter event name. ")
-            event_date = input("Enter month, date, and year as MM/DD/YY. ")
-            event_time = input("Enter event time. ")
-            event_reminder_date = input("What date would you like to be reminded? ")
-            event_reminder_time = input("What time would you like to be reminded? ")
+        #     event_name = input("Enter event name. ")
+        #     event_date = input("Enter month, date, and year as MM/DD/YY. ")
+        #     event_time = input("Enter event time. ")
+        #     event_reminder_date = input("What date would you like to be reminded? ")
+        #     event_reminder_time = input("What time would you like to be reminded? ")
 
-            ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
-            valid_event = checkValidEvent(ourFirstEvent)
+        #     ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
+        #     valid_event = checkValidEvent(ourFirstEvent)
 
-            print("This is our first event: " + str(ourFirstEvent))
-            print("Does this event pass all the tests? "+str(valid_event))
+        #     print("This is our first event: " + str(ourFirstEvent))
+        #     print("Does this event pass all the tests? "+str(valid_event))
 
-            if valid_event:
-                events_list += [ourFirstEvent]
-            else:
-                pass
-        print("Event added! ScheduleBot is ready to send reminders.")
+        #     if valid_event:
+        #         events_list += [ourFirstEvent]
+        #     else:
+        #         pass
+        # print("Event added! ScheduleBot is ready to send reminders.")
 
