@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Evie's Schedulebot program
 ### Sort Events
 import datetime  
