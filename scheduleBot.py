@@ -305,7 +305,7 @@ def test_functions():
     current_time_check = validDate("me/owwwww")
     print("Result: "+str(current_time_check))
 
-#homework: fix line 311 and fix line 318
+#homework: fix line 319 I actually have no idea how to fix that other line
 def checkForReminders(events_list):
     current_time = str(datetime.datetime.now())
     current_date = current_time[8:10]
