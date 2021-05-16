@@ -305,7 +305,17 @@ def test_functions():
     current_time_check = validDate("me/owwwww")
     print("Result: "+str(current_time_check))
 
-#homework: fix line 319 I actually have no idea how to fix that other line
+
+#homework: write this function:
+
+def convert_date_string_format(date_with_dashes):
+    '''
+    Example:
+        input is a string, formatted as YYYY-MM-DD
+        output should be a string, formatted as MM/DD/YYYY
+        So, 2021-05-16 should become 05/16/2021
+    '''
+
 def checkForReminders(events_list):
     current_time = str(datetime.datetime.now())
     current_date_myd = current_time[0:10]
