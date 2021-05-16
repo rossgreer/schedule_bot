@@ -308,14 +308,24 @@ def test_functions():
 #homework: fix line 319 I actually have no idea how to fix that other line
 def checkForReminders(events_list):
     current_time = str(datetime.datetime.now())
+    current_date_myd = current_time[0:10]
     current_date = current_time[8:10]
+    current_hour = current_time[11:13]
+    current_minute = current_time[14:16]
+    current_time_one = current_time[11:16]
     print(current_time)
     print(current_date)
     for event in events_list:
         reminder_time = event.reminder_time
         reminder_date = event.reminder_date
+        print(reminder_time)
         if event.reminded == False:
-            if current_time >= reminder_time and current_date == reminder_date:
+            print("Event reminder was False!!!")
+            print(time_to_int(current_time_one) >= time_to_int(reminder_time))
+            print(current_date_myd == reminder_date)
+            print(current_date_myd)
+            print(reminder_date)
+            if time_to_int(current_time_one) >= time_to_int(reminder_time) and current_date_myd == reminder_date:
                 print("{} is coming up at {}".format(event.event_name, event.event_time))
                 event.reminded = True
     #check if they are equal
@@ -333,7 +343,7 @@ if __name__ == '__main__':
 
     event_limit = 100
     events_list = []
-    temp_events_list = [Event("Walk the dog","05/09/2021", "9:45","05/09/2021", "9:45")]
+    temp_events_list = [Event("Walk the dog","05/16/2021", "9:45","05/16/2021", "9:45")]
     infinity_counter = 0
 
     while True and infinity_counter < 10:
