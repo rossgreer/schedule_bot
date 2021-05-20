@@ -309,13 +309,18 @@ def test_functions():
 #homework: write this function:
 
 def convert_date_string_format(date_with_dashes):
+    dwd_month = date_with_dashes[5:7]
+    dwd_day = date_with_dashes[8:10]
+    dwd_year = date_with_dashes[0:4]
+    dwd_combined = dwd_month + "/" + dwd_day + "/" + dwd_year
     '''
     Example:
         input is a string, formatted as YYYY-MM-DD
         output should be a string, formatted as MM/DD/YYYY
         So, 2021-05-16 should become 05/16/2021
     '''
-
+    return dwd_combined
+print("Here is the new date!" + convert_date_string_format("2021-05-21"))
 def checkForReminders(events_list):
     current_time = str(datetime.datetime.now())
     current_date_myd = current_time[0:10]
