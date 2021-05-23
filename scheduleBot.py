@@ -352,7 +352,7 @@ if __name__ == '__main__':
     temp_events_list = [Event("Walk the dog","9:45","05/23/2021","05/23/2021", "9:25")]
     infinity_counter = 0
 
-    while True and infinity_counter < 100000:
+    while True and infinity_counter < 1000000:
 
         ### TODO: Check if reminder should be issued 
         #print("Checking for reminders...")
