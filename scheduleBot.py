@@ -25,10 +25,13 @@ def time_to_float(time1):
 
     # “turn the 30 into 30/60 = .5”
     minutes_decimal = minutes_int/60
+    print(time1)
+    print(minutes_decimal)
 
     # “add it to the 16”
     final_time = hour_int + minutes_int
-
+    print(hour_int)
+    print(final_time)
     return final_time
 
 def time1_less_than_eq_time2(time1, time2):
