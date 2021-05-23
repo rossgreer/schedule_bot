@@ -323,7 +323,7 @@ def convert_date_string_format(date_with_dashes):
 print("Here is the new date!" + convert_date_string_format("2021-05-21"))
 def checkForReminders(events_list):
     current_time = str(datetime.datetime.now())
-    current_date_myd = current_time[0:10]
+    current_date_myd = convert_date_string_format(current_time[0:10])
     current_date = current_time[8:10]
     current_hour = current_time[11:13]
     current_minute = current_time[14:16]
@@ -343,7 +343,7 @@ def checkForReminders(events_list):
             print(current_date_myd)
             print(reminder_date)
             if time_to_float(current_time_one) >= time_to_float(reminder_time) and current_date_myd == reminder_date:
-                print("{} is coming up at {}".format(event.event_name, event.event_time))
+                print("{} is coming up at {}".format(event.name, event.time))
                 event.reminded = True
     #check if they are equal
     #remind for 2 minutes
