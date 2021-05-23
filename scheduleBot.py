@@ -320,7 +320,6 @@ def convert_date_string_format(date_with_dashes):
         So, 2021-05-16 should become 05/16/2021
     '''
     return dwd_combined
-print("Here is the new date!" + convert_date_string_format("2021-05-21"))
 def checkForReminders(events_list):
     current_time = str(datetime.datetime.now())
     current_date_myd = convert_date_string_format(current_time[0:10])
@@ -328,20 +327,10 @@ def checkForReminders(events_list):
     current_hour = current_time[11:13]
     current_minute = current_time[14:16]
     current_time_one = current_time[11:16]
-    print(current_time)
-    print(current_date)
     for event in events_list:
         reminder_time = event.reminder_time
         reminder_date = event.reminder_date
-        print(reminder_time)
         if event.reminded == False:
-            print("Event reminder was False!!!")
-            print(time_to_float(current_time_one) >= time_to_float(reminder_time))
-            print(time_to_float(current_time_one))
-            print(time_to_float(reminder_time))
-            print(current_date_myd == reminder_date)
-            print(current_date_myd)
-            print(reminder_date)
             if time_to_float(current_time_one) >= time_to_float(reminder_time) and current_date_myd == reminder_date:
                 print("{} is coming up at {}".format(event.name, event.time))
                 event.reminded = True
@@ -355,7 +344,7 @@ if __name__ == '__main__':
     # We need to store event time, event date, when to be reminded
 
     ## AREA FOR TESTING FUNCTIONS 
-    test_functions()
+    #test_functions()
     ## END TESTING
 
     event_limit = 100
