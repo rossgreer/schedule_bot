@@ -337,6 +337,8 @@ def checkForReminders(events_list):
         if event.reminded == False:
             print("Event reminder was False!!!")
             print(time_to_int(current_time_one) >= time_to_int(reminder_time))
+            print(time_to_int(current_time_one))
+            print(time_to_int(reminder_time))
             print(current_date_myd == reminder_date)
             print(current_date_myd)
             print(reminder_date)
