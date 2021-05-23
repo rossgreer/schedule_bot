@@ -1,7 +1,7 @@
 # Evie's Schedulebot program
 ### Sort Events
 import datetime  
-
+import keyboard
 
 
 def time_to_float(time1):
@@ -352,12 +352,14 @@ if __name__ == '__main__':
     temp_events_list = [Event("Walk the dog","9:45","05/23/2021","05/23/2021", "9:25")]
     infinity_counter = 0
 
-    while True and infinity_counter < 10:
+    while True and infinity_counter < 100000:
 
         ### TODO: Check if reminder should be issued 
-        print("Checking for reminders...")
+        #print("Checking for reminders...")
         checkForReminders(temp_events_list)
         infinity_counter += 1
+        if keyboard.is_pressed('n'):  # if key 'q' is pressed 
+            print('You Pressed the n key to make a new event!')
 
         ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
         # valid_event = False
