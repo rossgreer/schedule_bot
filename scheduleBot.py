@@ -4,7 +4,7 @@ import datetime
 
 
 
-def time_to_int(time1):
+def time_to_float(time1):
     # Takes a military time string, and converts to a decimal
     '''
     Example: 
@@ -36,7 +36,7 @@ def time1_less_than_eq_time2(time1, time2):
     # Return ‘False’ otherwise
     # time1 and time2 are each strings, in military time. 
   
-    if time_to_int(time1) <= time_to_int(time2):
+    if time_to_float(time1) <= time_to_float(time2):
         return True
     else:
         return False
@@ -336,13 +336,13 @@ def checkForReminders(events_list):
         print(reminder_time)
         if event.reminded == False:
             print("Event reminder was False!!!")
-            print(time_to_int(current_time_one) >= time_to_int(reminder_time))
-            print(time_to_int(current_time_one))
-            print(time_to_int(reminder_time))
+            print(time_to_float(current_time_one) >= time_to_float(reminder_time))
+            print(time_to_float(current_time_one))
+            print(time_to_float(reminder_time))
             print(current_date_myd == reminder_date)
             print(current_date_myd)
             print(reminder_date)
-            if time_to_int(current_time_one) >= time_to_int(reminder_time) and current_date_myd == reminder_date:
+            if time_to_float(current_time_one) >= time_to_float(reminder_time) and current_date_myd == reminder_date:
                 print("{} is coming up at {}".format(event.event_name, event.event_time))
                 event.reminded = True
     #check if they are equal
