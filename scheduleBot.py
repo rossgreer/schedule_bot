@@ -358,7 +358,7 @@ if __name__ == '__main__':
 
     event_limit = 100
     events_list = []
-    temp_events_list = [Event("Walk the dog","05/16/2021", "9:45","05/16/2021", "9:45")]
+    temp_events_list = [Event("Walk the dog","05/23/2021", "9:45","05/23/2021", "9:45")]
     infinity_counter = 0
 
     while True and infinity_counter < 10:
