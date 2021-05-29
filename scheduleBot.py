@@ -360,26 +360,26 @@ if __name__ == '__main__':
         infinity_counter += 1
         if keyboard.is_pressed('n'):  # if key 'q' is pressed 
             print('You Pressed the n key to make a new event!')
+            valid_event = False
+            while not valid_event:
+                event_name = input("Enter event name. ")
+                event_date = input("Enter month, date, and year as MM/DD/YY. ")
+                event_time = input("Enter event time. ")
+                event_reminder_date = input("What date would you like to be reminded? ")
+                event_reminder_time = input("What time would you like to be reminded? ")
+
+                ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
+                valid_event = checkValidEvent(ourFirstEvent)
+
+                print("This is our first event: " + str(ourFirstEvent))
+                print("Does this event pass all the tests? "+str(valid_event))
+
+                if valid_event:
+                    events_list += [ourFirstEvent]
+                else:
+                    pass
 
         ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
-        # valid_event = False
-        # while not valid_event:
-
-        #     event_name = input("Enter event name. ")
-        #     event_date = input("Enter month, date, and year as MM/DD/YY. ")
-        #     event_time = input("Enter event time. ")
-        #     event_reminder_date = input("What date would you like to be reminded? ")
-        #     event_reminder_time = input("What time would you like to be reminded? ")
-
-        #     ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
-        #     valid_event = checkValidEvent(ourFirstEvent)
-
-        #     print("This is our first event: " + str(ourFirstEvent))
-        #     print("Does this event pass all the tests? "+str(valid_event))
-
-        #     if valid_event:
-        #         events_list += [ourFirstEvent]
-        #     else:
-        #         pass
-        # print("Event added! ScheduleBot is ready to send reminders.")
+        # Everything seems fine but whenever I put an event in, it says it's in the past, even though it's not.
+print("Event added! ScheduleBot is ready to send reminders.")
 
