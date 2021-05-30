@@ -311,7 +311,7 @@ def test_functions():
 def convert_date_string_format(date_with_dashes):
     dwd_month = date_with_dashes[5:7]
     dwd_day = date_with_dashes[8:10]
-    dwd_year = date_with_dashes[0:4]
+    dwd_year = date_with_dashes[2:4]
     dwd_combined = dwd_month + "/" + dwd_day + "/" + dwd_year
     '''
     Example:
@@ -349,14 +349,14 @@ if __name__ == '__main__':
 
     event_limit = 100
     events_list = []
-    temp_events_list = [Event("Walk the dog","9:45","05/23/2021","05/23/2021", "9:25")]
+    #temp_events_list = [Event("Walk the dog","9:45","05/23/2021","05/23/2021", "9:25")]
     infinity_counter = 0
 
     while True: #and infinity_counter < 1000000:
 
         ### TODO: Check if reminder should be issued 
         #print("Checking for reminders...")
-        checkForReminders(temp_events_list)
+        checkForReminders(events_list)
         #infinity_counter += 1
         if keyboard.is_pressed('n'):  # if key 'q' is pressed 
             print('You Pressed the n key to make a new event!')
