@@ -2,6 +2,7 @@
 ### Sort Events
 import datetime  
 import keyboard
+import pyttsx3
 
 
 def time_to_float(time1):
@@ -332,7 +333,11 @@ def checkForReminders(events_list):
         reminder_date = event.reminder_date
         if event.reminded == False:
             if time_to_float(current_time_one) >= time_to_float(reminder_time) and current_date_myd == reminder_date:
-                print("{} is coming up at {}".format(event.name, event.time))
+                reminder_str = "{} is coming up at {}".format(event.name, event.time)
+                print(reminder_str)
+                engine = pyttsx3.init()
+                engine.say(reminder_str)
+                engine.runAndWait()
                 event.reminded = True
     #check if they are equal
     #remind for 2 minutes
