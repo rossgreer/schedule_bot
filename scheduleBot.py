@@ -115,9 +115,9 @@ def eventIsInThePast(event_complete_date, event_time):
 
     if event_year < current_year:
         return True
-    elif event_month < current_month:
+    elif event_month < current_month and event_year == current_year:
         return True
-    elif event_date < current_date:
+    elif event_date < current_date and event_month == current_month:
         return True
     else:
         return False
@@ -376,10 +376,11 @@ if __name__ == '__main__':
 
                 if valid_event:
                     events_list += [ourFirstEvent]
+                    print("Event added! ScheduleBot is ready to send reminders.")
                 else:
                     pass
 
         ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
         # Everything seems fine but whenever I put an event in, it says it's in the past, even though it's not.
-print("Event added! ScheduleBot is ready to send reminders.")
+
 
