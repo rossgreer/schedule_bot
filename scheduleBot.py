@@ -336,6 +336,8 @@ def checkForReminders(events_list):
                 reminder_str = "{} is coming up at {} on {} ".format(event.name, event.time, event.date)
                 print(reminder_str)
                 engine = pyttsx3.init()
+                newVoiceRate = 145
+                engine.setProperty('rate',newVoiceRate)
                 engine.say(reminder_str)
                 engine.runAndWait()
                 event.reminded = True
