@@ -16,7 +16,7 @@ def time_to_float(time1):
     40/60 = 0.666666666
     16.666666
     '''
-    # “find out where the colon part is”
+    # find out where the colon part is
     colon_position = time1.find(":") 
     hour = time1[:colon_position] # everything from beginning up to colon
     minutes = time1[colon_position+1:] # everything past colon to the end
@@ -24,17 +24,17 @@ def time_to_float(time1):
     hour_int = int(hour)
     minutes_int = int(minutes)
 
-    # “turn the 30 into 30/60 = .5”
+    # turn the 30 into 30/60 = .5
     minutes_decimal = minutes_int/60
 
-    # “add it to the 16”
+    # add it to the 16
     final_time = hour_int + minutes_decimal
 
     return final_time
 
 def time1_less_than_eq_time2(time1, time2):
-    # Given two times, return ‘True’ if time1 is less than or equal to time2.
-    # Return ‘False’ otherwise
+    # Given two times, return True if time1 is less than or equal to time2.
+    # Return False otherwise
     # time1 and time2 are each strings, in military time. 
   
     if time_to_float(time1) <= time_to_float(time2):
@@ -57,10 +57,10 @@ def sort_events(list_of_events, list_of_times):
                 candidate_2_event = list_of_events[index+1]
 
                 # if candidate_1_value <= candidate_2_value:
-                # if “18:30” <= “17:00” ←- this would give an error, we don’t know how to compare 2 strings
+                # if 18:30 <= 17:00 this would give an error, we dont know how to compare 2 strings
                 if time1_less_than_eq_time2(candidate_1_time, candidate_2_time): 
                 
-                    # move our ‘red boxes’ forward to the next pair
+                    # move our red boxes forward to the next pair
                     continue
                 else: 
                     # switch the numbers order
@@ -389,5 +389,3 @@ if __name__ == '__main__':
 
         ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
         # Everything seems fine but whenever I put an event in, it says it's in the past, even though it's not.
-
-
