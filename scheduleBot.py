@@ -369,8 +369,8 @@ if __name__ == '__main__':
         #infinity_counter += 1
         if keyboard.is_pressed('n'):  # if key 'q' is pressed 
             print('You Pressed the n key to make a new event!')
-	    time.sleep(1)
-	    sys.stdout.flush()
+            time.sleep(1)
+            sys.stdout.flush()
             valid_event = False
             while not valid_event:
                 event_name = input("Enter event name. ")
