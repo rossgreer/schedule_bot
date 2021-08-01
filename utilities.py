@@ -4,6 +4,17 @@ import pyttsx3
 import time
 import sys
 
+
+def time1_less_than_eq_time2(time1, time2):
+    # Given two times, return True if time1 is less than or equal to time2.
+    # Return False otherwise
+    # time1 and time2 are each strings, in military time. 
+  
+    if time_to_float(time1) <= time_to_float(time2):
+        return True
+    else:
+        return False
+
 def sort_events(list_of_events, list_of_times):
     start_of_list_iteration = 0
     while start_of_list_iteration < len(list_of_events): 
