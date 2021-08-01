@@ -138,7 +138,7 @@ def validDate(event_date):
     return True
 
 
-def reminder_date_at_least_month_before_event(event_date, reminder_date):
+def reminder_date_within_a_month_of_event(event_date, reminder_date):
     #MM/DD/YY (event date)
     #MM/DD/YY (reminder)
 
@@ -198,8 +198,8 @@ def checkValidEvent(event):
         elif not two_years_future(event.date):
             print("Event is more than two years in the future; cannot be added.")
             error_flag2 = True
-        elif not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
-            print("Event is not at least one month before the event.")
+        elif not reminder_date_within_a_month_of_event(event.date, event.reminder_date):
+            print("Reminder is not within one month of the event.")
             error_flag2 = True
 
     return not error_flag and not error_flag2
