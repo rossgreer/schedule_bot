@@ -342,7 +342,7 @@ def checkForReminders(events_list):
         reminder_time = event.reminder_time
         reminder_date = event.reminder_date
         if event.reminded == False:
-            if time_to_float(current_time_one) >= time_to_float(reminder_time) and current_date_myd == reminder_date:
+            if time1_less_than_eq_time2(reminder_time, current_time_one) and current_date_myd == reminder_date:
                 reminder_str = "{} is coming up at {} on {} ".format(event.name, event.time, event.date)
                 print(reminder_str)
                 engine = pyttsx3.init()
