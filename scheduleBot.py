@@ -348,7 +348,7 @@ if __name__ == '__main__':
         #print("Checking for reminders...")
         checkForReminders(events_list)
         #infinity_counter += 1
-        if keyboard.is_pressed('n'):  # if key 'q' is pressed 
+        if keyboard.is_pressed('n'):  # if key 'n' is pressed 
             print('You Pressed the n key to make a new event!')
             time.sleep(1)
             sys.stdout.flush()
@@ -372,5 +372,4 @@ if __name__ == '__main__':
                 else:
                     pass
 
-        ## TODO: Check if user is pressing 'n' for 'new' to add a new event. 
         # Everything seems fine but whenever I put an event in, it says it's in the past, even though it's not.
