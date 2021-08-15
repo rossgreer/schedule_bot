@@ -7,33 +7,6 @@ import time
 import sys
 
 
-def time_to_float(time1):
-    # Takes a military time string, and converts to a decimal
-    '''
-    Example: 
-    16:30
-    30/60 = 0.5
-    16 + 0.5 = 16.5
-    16:40
-    40/60 = 0.666666666
-    16.666666
-    '''
-    # find out where the colon part is
-    colon_position = time1.find(":") 
-    hour = time1[:colon_position] # everything from beginning up to colon
-    minutes = time1[colon_position+1:] # everything past colon to the end
-
-    hour_int = int(hour)
-    minutes_int = int(minutes)
-
-    # turn the 30 into 30/60 = .5
-    minutes_decimal = minutes_int/60
-
-    # add it to the 16
-    final_time = hour_int + minutes_decimal
-
-    return final_time
-
 def time1_less_than_eq_time2(time1, time2):
     # Given two times, return True if time1 is less than or equal to time2.
     # Return False otherwise
