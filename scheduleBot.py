@@ -3,6 +3,8 @@
 import datetime  
 import keyboard
 import pyttsx3
+import time
+import sys
 
 
 def time_to_float(time1):
@@ -193,7 +195,7 @@ def validDate(event_date):
     return True
 
 
-def reminder_date_at_least_month_before_event(event_date, reminder_date):
+def reminder_date_within_a_month_of_event(event_date, reminder_date):
     #MM/DD/YY (event date)
     #MM/DD/YY (reminder)
 
@@ -253,8 +255,8 @@ def checkValidEvent(event):
         elif not two_years_future(event.date):
             print("Event is more than two years in the future; cannot be added.")
             error_flag2 = True
-        elif not reminder_date_at_least_month_before_event(event.date, event.reminder_date):
-            print("Event is not at least one month before the event.")
+        elif not reminder_date_within_a_month_of_event(event.date, event.reminder_date):
+            print("Reminder is not within one month of the event.")
             error_flag2 = True
 
     return not error_flag and not error_flag2
@@ -375,6 +377,8 @@ if __name__ == '__main__':
         #infinity_counter += 1
         if keyboard.is_pressed('n'):  # if key 'q' is pressed 
             print('You Pressed the n key to make a new event!')
+            time.sleep(1)
+            sys.stdout.flush()
             valid_event = False
             while not valid_event:
                 event_name = input("Enter event name. ")
