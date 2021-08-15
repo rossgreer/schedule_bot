@@ -37,7 +37,15 @@ def time1_less_than_eq_time2(time1, time2):
     # Return False otherwise
     # time1 and time2 are each strings, in military time. 
   
-    if time_to_float(time1) <= time_to_float(time2):
+    time1_hour = int(time1[0:2])
+    time2_hour = int(time2[0:2])
+    time1_minute = int(time1[3:5])
+    time2_minute = int(time2[3:5])
+    if time1_hour < time2_hour:
+        return True
+    elif time1_hour > time2_hour:
+        return False
+    elif time1_minute < time2_minute:
         return True
     else:
         return False
