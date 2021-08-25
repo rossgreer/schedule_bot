@@ -316,6 +316,8 @@ def checkForReminders(events_list):
             if time1_less_than_eq_time2(reminder_time, current_time_one) and current_date_myd == reminder_date:
                 reminder_str = "{} is coming up at {} on {} ".format(event.name, event.time, event.date)
                 print(reminder_str)
+                sys.stdout.flush()
+
                 engine = pyttsx3.init()
                 newVoiceRate = 145
                 engine.setProperty('rate',newVoiceRate)
