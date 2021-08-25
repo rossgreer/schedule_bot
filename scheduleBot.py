@@ -367,19 +367,23 @@ if __name__ == '__main__':
                 event_time = input("Enter event time. ")
                 event_reminder_date = input("What date would you like to be reminded? ")
                 event_reminder_time = input("What time would you like to be reminded? ")
+                sys.studout.flush()
 
                 ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
                 valid_event = checkValidEvent(ourFirstEvent)
 
-                print("This is our first event: " + str(ourFirstEvent))
-                print("Does this event pass all the tests? "+str(valid_event))
+                print("This is our first event: " + str(ourFirstEvent) + "\n")
+                print("Does this event pass all the tests? "+str(valid_event)+"\n")
+                sys.studout.flush()
+
 
                 if valid_event:
                     events_list += [ourFirstEvent]
-                    print("Event added! ScheduleBot is ready to send reminders.")
+                    print("Event added! ScheduleBot is ready to send reminders.\n")
+                    sys.studout.flush()
+
                 else:
                     pass
 
-        time.sleep(.5)
 
         # Everything seems fine but whenever I put an event in, it says it's in the past, even though it's not.
