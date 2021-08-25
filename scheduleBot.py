@@ -31,12 +31,12 @@ def sort_events(list_of_events):
 
         for index, num in enumerate(list_of_events):
             candidate_1_position = index
-            candidate_1_time = list_of_events.index[index]
+            candidate_1_time = list_of_events[index].time
             candidate_1_event = list_of_events[index]
 
             candidate_2_position = index+1
-            if candidate_2_position < len(list_of_events.time):
-                candidate_2_time = list_of_events.time[index+1]
+            if candidate_2_position < len(list_of_events):
+                candidate_2_time = list_of_events[index+1].time
                 candidate_2_event = list_of_events[index+1]
 
                 # if candidate_1_value <= candidate_2_value:
@@ -48,11 +48,9 @@ def sort_events(list_of_events):
                 else: 
                     # switch the numbers order
                     # take the first candidate, put it where the second candidate was.
-                    list_of_events.time[candidate_2_position] = candidate_1_time
                     list_of_events[candidate_2_position] = candidate_1_event
 
-                    # take second candidate, put it where first candidate was. 
-                    list_of_events.time[candidate_1_position] = candidate_2_time
+                    # take second candidate, put it where first candidate was.
                     list_of_events[candidate_1_position] = candidate_2_event
                 
         start_of_list_iteration += 1
