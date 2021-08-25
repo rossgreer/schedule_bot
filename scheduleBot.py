@@ -351,7 +351,8 @@ if __name__ == '__main__':
             print("You pressed the p key to print your events!\n")
             sys.stdout.flush()
             sorted_event_list = sort_events(events_list)
-            print(sorted_event_list)
+            for event in sorted_event_list:
+                print(event.name)
             sys.stdout.flush()
 
             time.sleep(1)
