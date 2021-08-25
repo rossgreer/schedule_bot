@@ -380,4 +380,6 @@ if __name__ == '__main__':
                 else:
                     pass
 
+        time.sleep(.5)
+
         # Everything seems fine but whenever I put an event in, it says it's in the past, even though it's not.
