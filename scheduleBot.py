@@ -367,20 +367,20 @@ if __name__ == '__main__':
                 event_time = input("Enter event time. ")
                 event_reminder_date = input("What date would you like to be reminded? ")
                 event_reminder_time = input("What time would you like to be reminded? ")
-                sys.studout.flush()
+                sys.stdout.flush()
 
                 ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
                 valid_event = checkValidEvent(ourFirstEvent)
 
                 print("This is our first event: " + str(ourFirstEvent) + "\n")
                 print("Does this event pass all the tests? "+str(valid_event)+"\n")
-                sys.studout.flush()
+                sys.stdout.flush()
 
 
                 if valid_event:
                     events_list += [ourFirstEvent]
                     print("Event added! ScheduleBot is ready to send reminders.\n")
-                    sys.studout.flush()
+                    sys.stdout.flush()
 
                 else:
                     pass
