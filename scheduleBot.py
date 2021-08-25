@@ -352,7 +352,7 @@ if __name__ == '__main__':
             sys.stdout.flush()
             sorted_event_list = sort_events(events_list)
             for event in sorted_event_list:
-                print(event.name)
+                print(event.name + ", on " + event.date ", at " + event.time)
             sys.stdout.flush()
 
             time.sleep(1)
