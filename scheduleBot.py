@@ -363,6 +363,7 @@ if __name__ == '__main__':
         if keyboard.is_pressed('n'):  # if key 'n' is pressed 
             print('You Pressed the n key to make a new event!')
             time.sleep(1)
+            sys.stdin.flush()
             sys.stdout.flush()
             valid_event = False
             while not valid_event:
