@@ -7,7 +7,7 @@ import time
 import sys
 
 
-def time1_less_than_eq_time2(time1, time2):
+def time1_less_than_eq_time2(time1, time2, date1, date2):
     # Given two times, return True if time1 is less than or equal to time2.
     # Return False otherwise
     # time1 and time2 are each strings, in military time. 
