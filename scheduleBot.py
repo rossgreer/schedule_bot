@@ -10,13 +10,25 @@ import sys
 def time1_less_than_eq_time2(time1, time2, date1, date2):
     # Given two times, return True if time1 is less than or equal to time2.
     # Return False otherwise
-    # time1 and time2 are each strings, in military time. 
-  
+    # time1 and time2 are each strings, in military time.
+    # date should be MM/DD/YYYY
+    date1_year = date1[6:10]
+    date1_month = date1[0:2]
+    date1_day = date1[3:5]
+    date2_year = date2[6:10]
+    date2_month = date2[0:2]
+    date2_day = date2[3:5]
     time1_hour = int(time1[0:2])
     time2_hour = int(time2[0:2])
     time1_minute = int(time1[3:5])
     time2_minute = int(time2[3:5])
-    if time1_hour < time2_hour:
+    if date1_year < date2_year:
+        return True
+    elif date1_month < date2_month:
+        return True
+    elif date1_day < date2_day:
+        return True
+    elif time1_hour < time2_hour:
         return True
     elif time1_hour > time2_hour:
         return False
@@ -41,7 +53,7 @@ def sort_events(list_of_events):
 
                 # if candidate_1_value <= candidate_2_value:
                 # if 18:30 <= 17:00 this would give an error, we dont know how to compare 2 strings
-                if time1_less_than_eq_time2(candidate_1_time, candidate_2_time): 
+                if time1_less_than_eq_time2(candidate_1_time, candidate_2_time, "", ""): 
                 
                     # move our red boxes forward to the next pair
                     continue
@@ -346,7 +358,7 @@ if __name__ == '__main__':
 
         ### TODO: Check if reminder should be issued 
         #print("Checking for reminders...")
-        checkForReminders(events_list)
+        #(events_list)
         #infinity_counter += 1
 
         if keyboard.is_pressed('p'):
