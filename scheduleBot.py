@@ -23,11 +23,17 @@ def time1_less_than_eq_time2(time1, time2, date1, date2):
     time1_minute = int(time1[3:5])
     time2_minute = int(time2[3:5])
     if date1_year < date2_year:
-        return True
+        return True 
+    elif date1_year > date2_year:
+        return False
     elif date1_month < date2_month:
         return True
+    elif date1_month > date2_month:
+        return False
     elif date1_day < date2_day:
         return True
+    elif date1_day > date2_day:
+        return False
     elif time1_hour < time2_hour:
         return True
     elif time1_hour > time2_hour:
