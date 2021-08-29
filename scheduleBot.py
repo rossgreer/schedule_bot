@@ -389,7 +389,7 @@ if __name__ == '__main__':
                 ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
                 valid_event = checkValidEvent(ourFirstEvent)
 
-                print("This is our first event: " + str(ourFirstEvent) + "\n")
+                #print("This is our first event: " + str(ourFirstEvent) + "\n")
                 print("Does this event pass all the tests? "+str(valid_event)+"\n")
                 sys.stdout.flush()
 
