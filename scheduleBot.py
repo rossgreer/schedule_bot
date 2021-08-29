@@ -68,19 +68,10 @@ def sort_events(list_of_events):
                 else: 
                     # switch the numbers order
                     # take the first candidate, put it where the second candidate was.
-                    print("Attempting to switch events.")
-                    print("Previous: ")
-                    for event in list_of_events:
-                        print(event.name + ", on " + event.date + ", at " + event.time)
-                    sys.stdout.flush()
                     list_of_events[candidate_2_position] = candidate_1_event
 
                     # take second candidate, put it where first candidate was.
                     list_of_events[candidate_1_position] = candidate_2_event
-                    print("Updated:")
-                    for event in list_of_events:
-                        print(event.name + ", on " + event.date + ", at " + event.time)
-                    sys.stdout.flush()
 
                 
         start_of_list_iteration += 1
