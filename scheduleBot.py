@@ -51,15 +51,17 @@ def sort_events(list_of_events):
             candidate_1_position = index
             candidate_1_time = list_of_events[index].time
             candidate_1_event = list_of_events[index]
+            candidate_1_date = list_of_events[index].date
 
             candidate_2_position = index+1
             if candidate_2_position < len(list_of_events):
                 candidate_2_time = list_of_events[index+1].time
                 candidate_2_event = list_of_events[index+1]
+                candidate_2_date = list_of_events[index+1].date
 
                 # if candidate_1_value <= candidate_2_value:
                 # if 18:30 <= 17:00 this would give an error, we dont know how to compare 2 strings
-                if time1_less_than_eq_time2(candidate_1_time, candidate_2_time, "", ""): 
+                if time1_less_than_eq_time2(candidate_1_time, candidate_2_time, candidate_1_date, candidate_2_date): 
                 
                     # move our red boxes forward to the next pair
                     continue
