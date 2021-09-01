@@ -367,7 +367,7 @@ if __name__ == '__main__':
 
         ### TODO: Check if reminder should be issued 
         #print("Checking for reminders...")
-        #(events_list)
+        checkForReminders(events_list)
         #infinity_counter += 1
 
         if keyboard.is_pressed('p'):
