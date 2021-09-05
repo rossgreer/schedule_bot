@@ -12,16 +12,18 @@ def time1_less_than_eq_time2(time1, time2, date1, date2):
     # Return False otherwise
     # time1 and time2 are each strings, in military time.
     # date should be MM/DD/YYYY
-    date1_year = date1[6:10]
-    date1_month = date1[0:2]
-    date1_day = date1[3:5]
-    date2_year = date2[6:10]
-    date2_month = date2[0:2]
-    date2_day = date2[3:5]
+
+    date1_year = int(date1[6:10])
+    date1_month = int(date1[0:2])
+    date1_day = int(date1[3:5])
+    date2_year = int(date2[6:10])
+    date2_month = int(date2[0:2])
+    date2_day = int(date2[3:5])
     time1_hour = int(time1[0:2])
     time2_hour = int(time2[0:2])
     time1_minute = int(time1[3:5])
     time2_minute = int(time2[3:5])
+
     if date1_year < date2_year:
         return True 
     elif date1_year > date2_year:
@@ -40,8 +42,10 @@ def time1_less_than_eq_time2(time1, time2, date1, date2):
         return False
     elif time1_minute < time2_minute:
         return True
-    else:
+    elif time1_minute > time2_minute:
         return False
+    else:
+        return True
     
 def sort_events(list_of_events):
     start_of_list_iteration = 0
@@ -78,10 +82,6 @@ def sort_events(list_of_events):
 
     return list_of_events
 
-#our_list_of_events = ["Study for test", "Do laundry", "Finish homework"]
-#our_list_of_times = ["18:30","17:00","16:00"]
-#new_list = sort_events(our_list_of_events, our_list_of_times)
-#print(new_list)
 
 class Event():
 
@@ -100,7 +100,6 @@ def eventIsInThePast(event_complete_date, event_time):
     ## Returns 'True' if the event is in the past
     ## Returns 'False' otherwise
 
-    # TODO: figure out the current time
     current_time = str(datetime.datetime.now())
     
     # Extract features from current_time: year, month, date, hour, minutes
@@ -110,8 +109,6 @@ def eventIsInThePast(event_complete_date, event_time):
     current_hour = current_time[11:13]
     current_minute = current_time[14:16]
 
-    # How do we check if the event is in the past?
-    ## MM/DD/YY
     event_year = event_complete_date[6:8]
     event_month = event_complete_date[0:2]
     event_date = event_complete_date[3:5]
@@ -134,7 +131,6 @@ def two_years_future(event_date):
     event_month = event_date[0:2]
     current_month = current_time[5:7]
     
-    #Fix problem here for homework
     if int(event_year)-2 < int(current_year):
         return True
     elif int(event_year)-2 == int(current_year) and int(event_month) <= int(current_month):
@@ -205,8 +201,6 @@ def reminder_date_within_a_month_of_event(event_date, reminder_date):
         return True
     else:
         return False
-    #check the month and day
-    #if True, return True, if False, return False
 
 
 def checkValidEvent(event):
@@ -236,8 +230,6 @@ def checkValidEvent(event):
     elif not validMilitaryTime(event.reminder_time):
         print("Reminder is not in valid military time format; cannot be added.")
         error_flag = True
-
-
 
     error_flag2 = False
     if not error_flag:
@@ -309,8 +301,6 @@ def test_functions():
     print("Result: "+str(current_time_check))
 
 
-#homework: write this function:
-
 def convert_date_string_format(date_with_dashes):
     dwd_month = date_with_dashes[5:7]
     dwd_day = date_with_dashes[8:10]
@@ -334,7 +324,10 @@ def checkForReminders(events_list):
         reminder_time = event.reminder_time
         reminder_date = event.reminder_date
         if event.reminded == False:
-            if time1_less_than_eq_time2(reminder_time, current_time_one, reminder_date, current_date):
+            # print("Diagnostics:")
+            # print(time1_less_than_eq_time2(reminder_time, current_time_one, reminder_date, current_date_myd))
+            # time.sleep(10)
+            if time1_less_than_eq_time2(reminder_time, current_time_one, reminder_date, current_date_myd):
                 reminder_str = "{} is coming up at {} on {} ".format(event.name, event.time, event.date)
                 print(reminder_str)
                 sys.stdout.flush()
@@ -345,14 +338,8 @@ def checkForReminders(events_list):
                 engine.say(reminder_str)
                 engine.runAndWait()
                 event.reminded = True
-    #check if they are equal
-    #remind for 2 minutes
-    # if they are, give reminder
-
 
 if __name__ == '__main__':
-    # We need to put events in!
-    # We need to store event time, event date, when to be reminded
 
     ## AREA FOR TESTING FUNCTIONS 
     #test_functions()
@@ -379,7 +366,6 @@ if __name__ == '__main__':
             sys.stdout.flush()
 
             time.sleep(1)
-
 
         if keyboard.is_pressed('n'):  # if key 'n' is pressed 
             print('You Pressed the n key to make a new event!')
@@ -410,6 +396,3 @@ if __name__ == '__main__':
 
                 else:
                     pass
-
-
-        # Everything seems fine but whenever I put an event in, it says it's in the past, even though it's not.
