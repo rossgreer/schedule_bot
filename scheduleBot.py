@@ -23,16 +23,7 @@ def time1_less_than_eq_time2(time1, time2, date1, date2):
     time2_hour = int(time2[0:2])
     time1_minute = int(time1[3:5])
     time2_minute = int(time2[3:5])
-    print(date1_year)
-    print(date2_year)
-    print(date1_month)
-    print(date2_month)
-    print(date1_day)
-    print(date2_day)
-    print(time1_hour)
-    print(time2_hour)
-    print(time1_minute)
-    print(time2_minute)
+
     if date1_year < date2_year:
         return True 
     elif date1_year > date2_year:
@@ -333,9 +324,6 @@ def checkForReminders(events_list):
         reminder_time = event.reminder_time
         reminder_date = event.reminder_date
         if event.reminded == False:
-            # print("Diagnostics:")
-            # print(time1_less_than_eq_time2(reminder_time, current_time_one, reminder_date, current_date_myd))
-            time.sleep(10)
             if time1_less_than_eq_time2(reminder_time, current_time_one, reminder_date, current_date_myd):
                 reminder_str = "{} is coming up at {} on {} ".format(event.name, event.time, event.date)
                 print(reminder_str)
