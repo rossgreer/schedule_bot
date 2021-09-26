@@ -119,6 +119,8 @@ def eventIsInThePast(event_complete_date, event_time):
         return True
     elif event_date < current_date and event_month == current_month:
         return True
+    elif event_date == current_date and event_time < current_time:
+        return True
     else:
         return False
 
