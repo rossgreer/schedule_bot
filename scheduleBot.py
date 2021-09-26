@@ -238,6 +238,9 @@ def checkValidEvent(event):
         if eventIsInThePast(event.date, event.time):
             print("Event is in the past; cannot be added.")
             error_flag2 = True
+        elif eventIsInThePast(event.reminder_date, event.reminder_time):
+            print("Reminder is in the past; cannot be added.")
+            error_flag2 = True
         elif not two_years_future(event.date):
             print("Event is more than two years in the future; cannot be added.")
             error_flag2 = True
