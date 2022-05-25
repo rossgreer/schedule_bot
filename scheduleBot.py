@@ -1,5 +1,4 @@
 # Evie's Schedulebot program
-### Sort Events
 import datetime  
 import keyboard
 import pyttsx3
@@ -8,21 +7,15 @@ import sys
 
 
 def time1_less_than_eq_time2(time1, time2, date1, date2):
-    # Given two times, return True if time1 is less than or equal to time2.
+    # Given two times, return True if time1 is earlier than or equal to time2.
     # Return False otherwise
     # time1 and time2 are each strings, in military time.
     # date should be MM/DD/YYYY
 
-    date1_year = int(date1[6:10])
-    date1_month = int(date1[0:2])
-    date1_day = int(date1[3:5])
-    date2_year = int(date2[6:10])
-    date2_month = int(date2[0:2])
-    date2_day = int(date2[3:5])
-    time1_hour = int(time1[0:2])
-    time2_hour = int(time2[0:2])
-    time1_minute = int(time1[3:5])
-    time2_minute = int(time2[3:5])
+    date1_year, date1_month, date1_day = int(date1[6:10]), int(date1[0:2]), int(date1[3:5])
+    date2_year, date2_month, date2_day = int(date2[6:10]), int(date2[0:2]), int(date2[3:5])
+    time1_hour, time1_minute = int(time1[0:2]), int(time1[3:5])
+    time2_hour, time2_minute = int(time2[0:2]), int(time2[3:5])
 
     if date1_year < date2_year:
         return True 
@@ -48,6 +41,7 @@ def time1_less_than_eq_time2(time1, time2, date1, date2):
         return True
     
 def sort_events(list_of_events):
+    #this function sorts a list of events in chronological order.
     start_of_list_iteration = 0
     while start_of_list_iteration < len(list_of_events): 
 
@@ -63,13 +57,7 @@ def sort_events(list_of_events):
                 candidate_2_event = list_of_events[index+1]
                 candidate_2_date = list_of_events[index+1].date
 
-                # if candidate_1_value <= candidate_2_value:
-                # if 18:30 <= 17:00 this would give an error, we dont know how to compare 2 strings
-                if time1_less_than_eq_time2(candidate_1_time, candidate_2_time, candidate_1_date, candidate_2_date): 
-                
-                    # move our red boxes forward to the next pair
-                    continue
-                else: 
+                if not time1_less_than_eq_time2(candidate_1_time, candidate_2_time, candidate_1_date, candidate_2_date):
                     # switch the numbers order
                     # take the first candidate, put it where the second candidate was.
                     list_of_events[candidate_2_position] = candidate_1_event
@@ -77,7 +65,6 @@ def sort_events(list_of_events):
                     # take second candidate, put it where first candidate was.
                     list_of_events[candidate_1_position] = candidate_2_event
 
-                
         start_of_list_iteration += 1
 
     return list_of_events
@@ -216,30 +203,20 @@ def checkValidEvent(event):
     ##    reminder date is not more than a month before the event
     ##    reminder time is a valid military time
     
-    error_flag = False
+    error_flag, error_flag2 = False, False
     if len(event.name) > 300:
         print("This event is invalid; more than 300 characters. ")
         error_flag = True
-    elif not validDate(event.date):
-        print("Event date is not in valid date format; cannot be added.")
+    elif not validDate(event.date) or not validDate(event.reminder_date):
+        print("Event or reminder date is not in valid date format; cannot be added.")
         error_flag = True
-    elif not validDate(event.reminder_date):
-        print("Reminder date is not in valid date format; cannot be added.")
-        error_flag = True
-    elif not validMilitaryTime(event.time):
-        print("Event is not in valid military time format; cannot be added.")
-        error_flag = True
-    elif not validMilitaryTime(event.reminder_time):
-        print("Reminder is not in valid military time format; cannot be added.")
+    elif not validMilitaryTime(event.time) or not validMilitaryTime(event.reminder_time):
+        print("Event or reminder is not in valid military time format; cannot be added.")
         error_flag = True
 
-    error_flag2 = False
     if not error_flag:
-        if eventIsInThePast(event.date, event.time):
-            print("Event is in the past; cannot be added.")
-            error_flag2 = True
-        elif eventIsInThePast(event.reminder_date, event.reminder_time):
-            print("Reminder is in the past; cannot be added.")
+        if eventIsInThePast(event.date, event.time) or eventIsInThePast(event.reminder_date, event.reminder_time):
+            print("Event or reminder is in the past; cannot be added.")
             error_flag2 = True
         elif not two_years_future(event.date):
             print("Event is more than two years in the future; cannot be added.")
@@ -307,17 +284,18 @@ def test_functions():
 
 
 def convert_date_string_format(date_with_dashes):
-    dwd_month = date_with_dashes[5:7]
-    dwd_day = date_with_dashes[8:10]
-    dwd_year = date_with_dashes[2:4]
-    dwd_combined = dwd_month + "/" + dwd_day + "/" + dwd_year
     '''
     Example:
         input is a string, formatted as YYYY-MM-DD
         output should be a string, formatted as MM/DD/YYYY
         So, 2021-05-16 should become 05/16/2021
     '''
+    dwd_month = date_with_dashes[5:7]
+    dwd_day = date_with_dashes[8:10]
+    dwd_year = date_with_dashes[2:4]
+    dwd_combined = dwd_month + "/" + dwd_day + "/" + dwd_year
     return dwd_combined
+
 def checkForReminders(events_list):
     current_time = str(datetime.datetime.now())
     current_date_myd = convert_date_string_format(current_time[0:10])
@@ -342,23 +320,9 @@ def checkForReminders(events_list):
                 event.reminded = True
 
 if __name__ == '__main__':
-
-    ## AREA FOR TESTING FUNCTIONS 
-    #test_functions()
-    ## END TESTING
-
-    event_limit = 100
-    events_list = []
-    #temp_events_list = [Event("Walk the dog","9:45","05/23/2021","05/23/2021", "9:25")]
-    infinity_counter = 0
-
-    while True: #and infinity_counter < 1000000:
-
-        ### TODO: Check if reminder should be issued 
-        #print("Checking for reminders...")
+    event_limit, events_list = 100, []
+    while True:
         checkForReminders(events_list)
-        #infinity_counter += 1
-
         if keyboard.is_pressed('p'):
             print("You pressed the p key to print your events!\n")
             sys.stdout.flush()
@@ -366,9 +330,7 @@ if __name__ == '__main__':
             for event in sorted_event_list:
                 print(event.name + ", on " + event.date + ", at " + event.time)
             sys.stdout.flush()
-
             time.sleep(1)
-
         if keyboard.is_pressed('n'):  # if key 'n' is pressed 
             print('You Pressed the n key to make a new event!')
             time.sleep(1)
@@ -382,19 +344,11 @@ if __name__ == '__main__':
                 event_reminder_date = input("What date would you like to be reminded? ")
                 event_reminder_time = input("What time would you like to be reminded? ")
                 sys.stdout.flush()
-
                 ourFirstEvent = Event(event_name, event_time, event_date, event_reminder_date, event_reminder_time)
                 valid_event = checkValidEvent(ourFirstEvent)
-
-                #print("This is our first event: " + str(ourFirstEvent) + "\n")
                 print("Does this event pass all the tests? "+str(valid_event)+"\n")
                 sys.stdout.flush()
-
-
                 if valid_event:
                     events_list += [ourFirstEvent]
                     print("Event added! ScheduleBot is ready to send reminders.\n")
                     sys.stdout.flush()
-
-                else:
-                    pass
